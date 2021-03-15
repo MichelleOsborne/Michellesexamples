@@ -18,13 +18,15 @@ let db = new sqlite3.Database("students.db", function(err) {
 var sql = "SELECT * FROM Modules";
 
 // Execute SQL query, and run function on every row returned.
-db.each(sql, function(err, row) {
+db.get(sql, function(err, row) {
     // If error display
     if (err) {
         return console.error(err.message);
     }
     // Print the code column and name column from row seperated by a tab \t
-    console.log(row.code + "\t" + row.name);
+    for (var row of rows) {
+        console.log(row.code + "\t" + row.name);
+    }
 });
 
 // *** NEW CODE ENDS HERE ***
